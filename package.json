@@ -1,0 +1,33 @@
+{
+  "name": "aleph-swap-dapp",
+  "version": "0.0.1",
+  "description": "Aleph.im dApp aiming a facilitating the swapping of cross-chain tokens",
+  "productName": "Aleph.im Cross-Chain Token Swap",
+  "author": "Moshe Malawach <moshe@aleph.im>",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0",
+    "dev": "quasar dev",
+    "build": "quasar build"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.4",
+    "aleph-js": "^0.5.3",
+    "buffer": "^6.0.3",
+    "ethers": "5.7.2",
+    "moment": "^2.30.1",
+    "quasar": "^2.8.0",
+    "vue": "^3.2.29",
+    "vue-router": "^4.0.12"
+  },
+  "devDependencies": {
+    "@quasar/app-vite": "^1.4.3",
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.14"
+  },
+  "engines": {
+    "node": "^20 || ^18 || ^16",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}
