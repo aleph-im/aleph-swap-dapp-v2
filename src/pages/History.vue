@@ -1,5 +1,5 @@
 <template>
-    <q-page class="">
+    <q-page class="" padding>
       <div class="content">
         <h4 class="text-white row justify-between">
           History

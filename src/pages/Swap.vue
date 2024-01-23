@@ -1,11 +1,11 @@
 <template>
-  <q-page class="">
+  <q-page class="" padding>
     <div class="content">
-      <h4 class="text-white">
+      <h4 class="linear-green">
         Swap
       </h4>
         <swap />
-      <h4 class="text-white row justify-between">
+      <h4 class="linear-green row justify-between">
         History
         <q-btn
           color="white"

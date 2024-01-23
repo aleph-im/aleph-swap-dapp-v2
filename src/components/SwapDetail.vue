@@ -1,5 +1,5 @@
 <template>
-  <q-card class="q-mb-md text-black">
+  <q-card class="q-mb-md">
     <q-card-section horizontal class="justify-between">
       <q-card-section>
         <div class="text-h6">
