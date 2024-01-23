@@ -1,6 +1,6 @@
 <template>
   <span class="text-caption">
-    <a :href="url">{{hash}}</a>
+    <a :href="url" class="text-grey text-bold text-italic">{{hash}}</a>
   </span>
 </template>
 <script>

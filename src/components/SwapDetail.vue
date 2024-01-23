@@ -8,10 +8,23 @@
         <currency-amount :amount="swap.content.source.amount" :symbol="swap.content.symbol" />
       </div>
       <div class="text-subtitle2">
-        <q-tooltip>
-          {{moment(swap.time * 1000).format("lll")}}
-        </q-tooltip>
-        {{moment(swap.time * 1000).fromNow()}}
+        <span class="text-grey text-italic">
+          <q-tooltip>
+            {{moment(swap.time * 1000).format("lll")}}
+          </q-tooltip>
+          {{moment(swap.time * 1000).fromNow()}}
+        </span> 
+        <span v-if="swap.content.source.height" class="text-caption q-ml-md text-bold"> Block {{swap.content.source.height}}</span>
+
+        <span class="q-ml-md">
+          <q-tooltip>
+          {{swap.content.status}}
+          </q-tooltip>
+          <q-icon v-if="swap.content.status == 'pending'" name="schedule" />
+          <q-icon v-else-if="swap.content.status == 'failed'" name="warning" />
+          <q-icon v-else-if="swap.content.status == 'finished'" name="done" />
+          <q-icon v-else name="help" />
+        </span>
       </div>
     </div>
 
@@ -22,10 +35,14 @@
 
       <q-card-section horizontal class="justify-between">
 
-        <q-card-section class="col text-right">
+        <q-card-section class="col">
           {{swap.content.source.chain}}<br />
           <Address :address="swap.content.source.address" :chain="swap.content.source.chain" /><br />
-          <span v-if="swap.content.source.height" class="text-caption">Block {{swap.content.source.height}}</span>
+
+          <div v-if="swap.content.source.tx" class="text-subtitle2">
+            TX FROM<br />
+            <tx-hash :hash="swap.content.source.tx" :chain="swap.content.source.chain" />
+          </div>
         </q-card-section>
 
 
@@ -37,46 +54,13 @@
           {{swap.content.target.chain}}<br />
           <Address :address="swap.content.target.target" :chain="swap.content.target.chain" /><br />
           <span v-if="swap.content.target.height" class="text-caption">Block {{swap.content.target.height}}</span>
-        </q-card-section>
 
-        <q-card-section class="col-auto column justify-between">
-          <div class="text-center">
-            <q-tooltip>
-            {{swap.content.status}}
-            </q-tooltip>
-            <q-icon v-if="swap.content.status == 'pending'" name="schedule" />
-            <q-icon v-else-if="swap.content.status == 'failed'" name="warning" />
-            <q-icon v-else-if="swap.content.status == 'finished'" name="done" />
-            <q-icon v-else name="help" />
-          </div>
-          <div>
-            <q-btn
-              color="grey"
-              round
-              flat
-              dense
-              :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
-              @click="expanded = !expanded"
-            />
+          <div v-if="swap.content.target.tx" class="text-subtitle2">
+            TX TO<br />
+            <tx-hash :hash="swap.content.target.tx" :chain="swap.content.target.chain" />
           </div>
         </q-card-section>
       </q-card-section>
-      <q-slide-transition>
-          <div v-show="expanded">
-            <q-separator />
-            <q-card-section>
-              <div v-if="swap.content.source.tx" class="text-subtitle2">
-                Tx from:<br />
-                <tx-hash :hash="swap.content.source.tx" :chain="swap.content.source.chain" />
-              </div>
-              <div v-if="swap.content.target.tx" class="text-subtitle2">
-                Tx to:<br />
-                <tx-hash :hash="swap.content.target.tx" :chain="swap.content.target.chain" />
-              </div>
-
-            </q-card-section>
-          </div>
-        </q-slide-transition>
     </q-card>
   </div>
 </template>

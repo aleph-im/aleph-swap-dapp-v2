@@ -1,6 +1,6 @@
 <template>
   <span class="text-caption">
-    <a :href="url">{{address}}</a>
+    <a :href="url" class="text-grey text-bold text-italic">{{address}}</a>
   </span>
 </template>
 <script>
