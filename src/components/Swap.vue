@@ -1,79 +1,98 @@
 <template>
   <div>
-    <q-card label="Swap">
-      <q-card-section class="q-pb-none">
-        <div class="text-h6">Swap tokens</div>
-      </q-card-section>
-      <q-card-section horizontal class="justify-between" v-if="!out_txid">
-        <q-card-section class="col">
-          <q-select v-model="source_chain" :options="source_chains" label="Source chain" />
-          <div v-if="['ETH', 'BSC', 'AVAX'].includes(source_chain)">
+    <h5><span class="text-light text-base text-white">01/</span> <span class="linear-green">Source chain</span></h5>
+
+    <q-tabs
+      v-model="source_chain"
+      class="text-white text-rubik q-pb-lg"
+      active-color="primary"
+      no-caps
+      align="left"
+    >
+      <q-tab v-for="chain of source_chains" :name="chain" :key="chain" :label="chain" />
+    </q-tabs>
+
+    <q-card>
+      <q-card-section>
+        <div v-if="['ETH', 'BSC', 'AVAX'].includes(source_chain)">
             <div v-if="(source_account==null)||(source_account.type != source_chain)">
-              Login with:
+              Login with
               <br />
-              <q-btn color="primary" size="sm" @click="login_metamask">
-                <img src="../assets/img/metamask.png" height="24px">
+              <q-btn color="primary" size="sm" @click="login_metamask" rounded standout>
+                <img src="../assets/img/metamask.png" height="24px"> Browser wallet
               </q-btn>
             </div>
             <div v-else>
-              <q-field label="Address" stack-label>
+              <q-field rounded standout label="Address" stack-label>
                 <template v-slot:control>
                   <div class="self-center full-width no-outline" tabindex="0">{{source_account.address}}</div>
                 </template>
               </q-field>
-              <q-input bottom-slots v-model.number="amount" label="Amount" type="number">
-                <template v-slot:hint>
-                  Current balance: {{aleph_balance}}
-                </template>
-              </q-input>
             </div>
           </div>
           <div v-else-if="source_chain == 'NULS2'">
-            <q-input bottom-slots v-model.number="amount" label="Amount" type="number">
+            <q-input rounded standout v-model.number="amount" label="Amount" type="number">
             </q-input>
           </div>
-        </q-card-section>
-        <q-card-section class="self-center">
-          <q-icon name="double_arrow" />
-        </q-card-section>
-        <q-card-section class="col">
-          <q-select v-model="target_chain" :options="target_chains" label="Target chain" />
-          <q-input v-model="target_address" label="Target address" :error="check_address()" />
-          <q-field label="Amount" stack-label :hint="fees[target_chain] ? `Fee of ${fees[target_chain]} ALEPH applies` : null">
-            <template v-slot:control>
-              <div class="self-center full-width no-outline" tabindex="0">{{target_amount}}</div>
-            </template>
-          </q-field>
-        </q-card-section>
-      </q-card-section>
-      <q-card-section class="text-right" v-if="(source_account.address != undefined)&&!check_address()&&!out_txid">
-        <q-btn @click="do_approve" color="primary"
-               v-if="(source_account.meta === 'ETH') && !enough_allowance"
-               class="q-mr-md" :loading="approving">
-          Approve
-        </q-btn>
-        <q-btn @click="do_swap" color="primary" :disabled="!can_swap" :loading="swapping">
-          Swap !
-        </q-btn>
-      </q-card-section>
-      <q-card-section class="text-center" v-else-if="(source_chain == 'NULS2')&&!check_address()&&!out_txid">
-        To proceed, please send <strong>{{amount}}</strong> ALEPH<br />
-        to <strong>{{targets.NULS2}}</strong><br/>
-        with remark <strong>{{prepared_target}}</strong>
-      </q-card-section>
-      <q-card-section v-if="out_txid">
-        Transaction issued:<br />
-        <tx-hash :hash="out_txid" :chain="source_chain" />
       </q-card-section>
     </q-card>
-    <div class="row">
-      <div class="col">
-      </div>
-      <div class="col-auto">
-      </div>
-      <div class="col align-right">
-      </div>
+
+    <h5><span class="text-light text-base text-white">02/</span> <span class="linear-green">Destination chain</span></h5>
+
+    <q-tabs
+      v-model="target_chain"
+      class="text-white text-rubik q-pb-lg"
+      active-color="primary"
+      no-caps
+      align="left"
+    >
+      <q-tab v-for="chain of target_chains" :name="chain" :key="chain" :label="chain" />
+    </q-tabs>
+    
+    <q-card>
+      <q-card-section>
+        <q-input rounded standout :bottom-slots="false" v-model="target_address" label="Target address" :error="check_address()" />
+      </q-card-section>
+    </q-card>
+
+    <h5><span class="text-light text-base text-white">03/</span> <span class="linear-green">Amount</span></h5>
+    <q-card>
+      <q-card-section>
+        <div>
+          <q-input  rounded standout bottom-slots v-model.number="amount" label="Amount" type="number">
+            <template v-slot:hint>
+              <div class="row justify-between">
+                <div v-if="aleph_balance">Current balance: {{aleph_balance}}.</div>
+                <div v-if="fees[target_chain]" class="text-warning">⚠️ Fee of {{fees[target_chain]}} ALEPH applies.</div>
+                <div v-if="target_amount" class="text-info">You will receive {{target_amount}} ALEPH.</div>
+              </div>
+            </template>
+          </q-input>
+        </div>
+      </q-card-section>
+    </q-card>
+
+
+    <div class="text-center q-ma-lg q-pa-lg" v-if="(source_chain != 'NULS2')&&(source_account.address != undefined)&&!check_address()&&!out_txid">
+      <q-btn @click="do_approve" color="glow-primary-raised"
+              v-if="(source_account.meta === 'ETH') && !enough_allowance"
+              class="text-bold text-rubik text-black shadow-glow" no-caps :loading="approving" rounded>
+        Approve
+      </q-btn>
+      <q-btn @click="do_swap" color="glow-primary-raised" class="text-bold text-rubik text-black shadow-glow" v-if="can_swap" no-caps :loading="swapping" rounded>
+        Swap {{amount}} ALEPH
+      </q-btn>
     </div>
+
+    <p class="text-center q-ma-lg" v-else-if="(source_chain == 'NULS2')&&!check_address()&&!out_txid">
+      To proceed, please send <strong>{{amount}}</strong> ALEPH<br />
+      to <strong>{{targets.NULS2}}</strong><br/>
+      with remark <strong>{{prepared_target}}</strong>
+    </p>
+    <p v-if="out_txid"  class="text-center q-ma-lg">
+      Transaction issued:<br />
+      <tx-hash :hash="out_txid" :chain="source_chain" />
+    </p>
   </div>
 </template>
 <script>
@@ -332,6 +351,7 @@ export default {
         let transaction = await contract.logSendMemo(
           ethers.utils.parseUnits(this.amount.toString(), 18),
           this.prepared_target)
+        this.out_txid = transaction.hash
         console.log(transaction)
         let receipt = await transaction.wait(3)
         console.log(receipt)
