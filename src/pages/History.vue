@@ -46,7 +46,8 @@
         this.refreshing = true
         let result = await posts.get_posts('xchain-swap', {
           addresses: [this.swap_address],
-          api_server: this.api_server
+          api_server: this.api_server,
+          pagination: 50
         })
         console.log(result)
         this.swaps = result.posts
