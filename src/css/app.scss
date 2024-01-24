@@ -39,6 +39,16 @@ h1, h2, h3, h4, h5, h6,
     font-style: italic;
 }
 
+.superscript {
+    font-family: Rubik;
+    font-size: 10px;
+    font-style: italic;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: uppercase; 
+    padding-right: 0.1em;
+}
+
 .linear-green {
     background: linear-gradient(90deg, #EEFF9C 0%, #00FFBD 100%);
     -webkit-background-clip: text;

@@ -36,11 +36,11 @@
       <q-card-section horizontal class="justify-between">
 
         <q-card-section class="col">
-          {{swap.content.source.chain}}<br />
+          <span class="superscript text-primary">{{swap.content.source.chain}}</span><br />
           <Address :address="swap.content.source.address" :chain="swap.content.source.chain" /><br />
 
           <div v-if="swap.content.source.tx" class="text-subtitle2">
-            TX FROM<br />
+            <span class="superscript text-primary">TX FROM</span><br />
             <tx-hash :hash="swap.content.source.tx" :chain="swap.content.source.chain" />
           </div>
         </q-card-section>
@@ -51,12 +51,12 @@
         </q-card-section>
 
         <q-card-section class="col">
-          {{swap.content.target.chain}}<br />
+          <span class="superscript text-primary">{{swap.content.target.chain}}</span><br />
           <Address :address="swap.content.target.target" :chain="swap.content.target.chain" /><br />
           <span v-if="swap.content.target.height" class="text-caption">Block {{swap.content.target.height}}</span>
 
           <div v-if="swap.content.target.tx" class="text-subtitle2">
-            TX TO<br />
+            <span class="superscript text-primary">TX TO</span><br />
             <tx-hash :hash="swap.content.target.tx" :chain="swap.content.target.chain" />
           </div>
         </q-card-section>
