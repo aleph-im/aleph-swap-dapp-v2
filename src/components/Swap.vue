@@ -7,7 +7,7 @@
       <q-card-section horizontal class="justify-between" v-if="!out_txid">
         <q-card-section class="col">
           <q-select v-model="source_chain" :options="source_chains" label="Source chain" />
-          <div v-if="['ETH', 'BSC'].includes(source_chain)">
+          <div v-if="['ETH', 'BSC', 'AVAX'].includes(source_chain)">
             <div v-if="(source_account==null)||(source_account.type != source_chain)">
               Login with:
               <br />
@@ -84,6 +84,9 @@ import {
 
 import TxHash from './TxHash.vue'
 import { get_erc20_contract, get_swap_contract } from 'src/services/ethereum';
+import { toRaw } from 'vue';
+
+let provider = null;
 
 export default {
   name: 'Swap',
@@ -93,38 +96,41 @@ export default {
   },
   data() {
     return {
-      source_chain: 'NULS2',
+      source_chain: 'ETH',
       source_account: {},
       source_balances: {},
       source_allowance: null,
-      target_chain: 'ETH',
+      target_chain: 'AVAX',
       target_address: '',
       approving: false,
       swapping: false,
       eth_chain_id: null,
       out_txid: null,
       amount: 0,
-      provider: null,
       source_chains: [
-        'NULS2',
         'ETH',
-        'BSC'
+        'AVAX',
+        'BSC',
+        'NULS2'
       ],
       target_chains: [
-        'NULS2',
         'ETH',
-        'BSC'
+        'AVAX',
+        'BSC',
+        'NULS2'
       ],
       contracts: {
         'NULS2': 'NULSd6HgyZkiqLnBzTaeSQfx1TNg2cqbzq51h',
         'ETH': '0x27702a26126e0B3702af63Ee09aC4d1A084EF628',
         'BSC': '0x82D2f8E02Afb160Dd5A480a617692e62de9038C4',
-        'NEO': '2efdb22c152896964665d0a8214dc7bd59232162'
+        'NEO': '2efdb22c152896964665d0a8214dc7bd59232162',
+        'AVAX': '0xc0Fbc4967259786C743361a5885ef49380473dCF'
       },
       targets: {
         'NULS2': 'NULSd6HgUUzDe6HxEB3SoyPR2V1DTvnaBFnVV',
         'ETH': '0x047f18e7F21Aa714c6a5f4B346318Eb384434A4b',
-        'BSC': '0x5594eA3f85272784f66A282FB3D78fe002B92356'
+        'BSC': '0x5594eA3f85272784f66A282FB3D78fe002B92356',
+        'AVAX': '0x5594eA3f85272784f66A282FB3D78fe002B92356'
       },
       chain_ids: {
         'ETH': 1,
@@ -153,7 +159,8 @@ export default {
     prepared_target() {
       let target = this.target_address
       if ((this.target_chain === 'BSC') ||
-          (this.target_chain === 'ETH')) {
+          (this.target_chain === 'ETH') ||
+          (this.target_chain === 'AVAX')) {
         target = `${this.target_address}@eip155:${this.chain_ids[this.target_chain]}`
       } else if (this.target_chain === 'NULS2') {
         target = `${this.target_address}@nuls`
@@ -187,7 +194,7 @@ export default {
   methods: {
     async update_eth_account() {
       this.source_chain = this.rev_chain_ids[this.eth_chain_id]
-      let signer = this.provider.getSigner()
+      let signer = provider.getSigner()
       this.source_account = {
         'meta': 'ETH',
         'type': this.source_chain,
@@ -201,20 +208,20 @@ export default {
       try {
         // const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
 
-        this.provider = new ethers.providers.Web3Provider(window.ethereum)
+        provider = new ethers.providers.Web3Provider(window.ethereum)
 
         // MetaMask requires requesting permission to connect users accounts
-        this.provider.send("eth_requestAccounts", []);
+        provider.send("eth_requestAccounts", []);
 
 
-        this.provider.on("network", async (newNetwork, oldNetwork) => {
+        provider.on("network", async (newNetwork, oldNetwork) => {
           console.log(newNetwork, oldNetwork)
           this.eth_chain_id = newNetwork.chainId
           if (Object.values(this.chain_ids).includes(newNetwork.chainId)) {
             await this.update_eth_account()
           }
         });
-        this.provider.on('accountsChanged', () => {
+        provider.on('accountsChanged', () => {
           console.log("hu hu")
         })
         // setAccounts(accounts);
@@ -237,7 +244,7 @@ export default {
     async get_source_allowance(account) {
       if (account.meta === 'ETH') {
         let contract = await get_erc20_contract(
-          this.contracts[account.type], account.signer)
+          this.contracts[account.type], provider.getSigner())
         let allowance = await contract.allowance(
           account.address,
           this.targets[account.type]
@@ -254,13 +261,19 @@ export default {
       } else if (account.type === 'ETH') {
         return {
           ALEPH: await get_web3_balance_info(
-            account.address, account.signer,
+            account.address, provider,
             this.contracts['ETH']
+          )}
+      } else if (account.type === 'AVAX') {
+        return {
+          ALEPH: await get_web3_balance_info(
+            account.address, provider,
+            this.contracts['AVAX']
           )}
       } else if (account.type === 'BSC') {
         return {
           ALEPH: await get_web3_balance_info(
-            account.address, account.signer,
+            account.address, provider,
             this.contracts['BSC']
           )}
       } else {
@@ -283,7 +296,7 @@ export default {
     check_address() {
       let address_type = this.guess_address_type(this.target_address)
       if (address_type != null) {
-        if ((address_type === 'ETH') && (this.target_chain==='BSC'))
+        if ((address_type === 'ETH') && (['AVAX', 'BSC'].includes(this.target_chain)))
           return false
 
         this.target_chain = address_type
@@ -292,17 +305,22 @@ export default {
       return true
     },
     async do_approve() {
-      if (this.source_account.meta == "ETH") {
-        this.approving = true
-        let contract = get_erc20_contract(
-          this.contracts[this.source_account.type],
-          this.source_account.signer)
-        let transaction = await contract.approve(
-          this.targets[this.source_account.type],
-          ethers.utils.parseUnits('500000000', 18))
-        let receipt = await transaction.wait(3)
-        await this.refresh_account()
-        this.approving = false
+      try {
+        if (this.source_account.meta == "ETH") {
+          this.approving = true
+          let contract = get_erc20_contract(
+            this.contracts[this.source_account.type],
+            provider.getSigner())
+          let transaction = await contract.approve(
+            this.targets[this.source_account.type],
+            ethers.utils.parseUnits('500000000', 18))
+          let receipt = await transaction.wait(3)
+          await this.refresh_account()
+          this.approving = false
+        }
+      }
+      catch (e) {
+        console.log(e)
       }
     },
     async do_swap() {
@@ -310,7 +328,7 @@ export default {
         this.swapping = true
         let contract = get_swap_contract(
           this.targets[this.source_account.type],
-          this.source_account.signer)
+          provider.getSigner())
         let transaction = await contract.logSendMemo(
           ethers.utils.parseUnits(this.amount.toString(), 18),
           this.prepared_target)
