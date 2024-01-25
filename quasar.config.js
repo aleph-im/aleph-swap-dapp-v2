@@ -54,6 +54,12 @@ module.exports = configure(function (/* ctx */) {
       },
 
       vueRouterMode: 'hash', // available values: 'hash', 'history'
+      extendViteConf (viteConf, { isServer, isClient }) {
+        if (viteConf.build.commonjsOptions == undefined) {
+          viteConf.build.commonjsOptions = {}
+        }
+        viteConf.build.commonjsOptions.transformMixedEsModules = true;
+      }
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
