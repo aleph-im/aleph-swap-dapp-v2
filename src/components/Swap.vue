@@ -9,7 +9,7 @@
       no-caps
       align="left"
     >
-      <q-tab v-for="chain of source_chains" :name="chain" :key="chain" :label="chain" />
+      <q-tab v-for="chain of source_chains" :name="chain" :key="chain" :label="chain_labels[chain]" />
     </q-tabs>
 
     <q-card>
@@ -46,7 +46,7 @@
       no-caps
       align="left"
     >
-      <q-tab v-for="chain of target_chains" :name="chain" :key="chain" :label="chain" />
+      <q-tab v-for="chain of target_chains" :name="chain" :key="chain" :label="chain_labels[chain]" />
     </q-tabs>
     
     <q-card>
@@ -138,6 +138,12 @@ export default {
         'BSC',
         'NULS2'
       ],
+      chain_labels: {
+        'ETH': 'Ethereum',
+        'AVAX': 'Avalanche C-Chain',
+        'BSC': 'BNB Chain',
+        'NULS2': 'NULS'
+      },
       contracts: {
         'NULS2': 'NULSd6HgyZkiqLnBzTaeSQfx1TNg2cqbzq51h',
         'ETH': '0x27702a26126e0B3702af63Ee09aC4d1A084EF628',
