@@ -79,7 +79,7 @@
               class="text-bold text-rubik text-black shadow-glow" no-caps :loading="approving" rounded>
         Approve
       </q-btn>
-      <q-btn @click="do_swap" color="glow-primary-raised" class="text-bold text-rubik text-black shadow-glow" v-if="can_swap" no-caps :loading="swapping" rounded>
+      <q-btn @click="do_swap" color="glow-primary-raised" class="text-bold text-rubik text-black shadow-glow" v-else :disabled="!can_swap" no-caps :loading="swapping" rounded>
         Swap {{amount}} ALEPH
       </q-btn>
     </div>
