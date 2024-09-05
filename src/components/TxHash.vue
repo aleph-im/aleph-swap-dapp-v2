@@ -15,6 +15,8 @@ export default {
         return `https://etherscan.io/tx/${this.hash}`
       else if (this.chain == 'BSC')
         return `https://bscscan.com/tx/${this.hash}`
+      else if (this.chain == 'BASE')
+        return `https://basescan.org/tx/${this.hash}`
       else if (this.chain == 'AVAX')
         return `https://snowtrace.io/tx/${this.hash}`
       else if (this.chain == 'NEO')

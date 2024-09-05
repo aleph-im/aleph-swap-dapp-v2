@@ -15,6 +15,8 @@ export default {
         return `https://etherscan.io/address/${this.address}`
       else if (this.chain == 'BSC')
         return `https://bscscan.com/address/${this.address}`
+      else if (this.chain == 'BASE')
+        return `https://basescan.org/address/${this.address}`
       else if (this.chain == 'AVAX')
         return `https://snowtrace.io/address/${this.address}`
       else if (this.chain == 'NEO')

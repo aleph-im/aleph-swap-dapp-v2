@@ -14,7 +14,7 @@
 
     <q-card>
       <q-card-section>
-        <div v-if="['ETH', 'BSC', 'AVAX'].includes(source_chain)">
+        <div v-if="['ETH', 'BSC', 'AVAX', 'BASE'].includes(source_chain)">
             <div v-if="(source_account==null)||(source_account.type != source_chain)">
               Login with
               <br />
@@ -129,18 +129,21 @@ export default {
       source_chains: [
         'ETH',
         'AVAX',
+        'BASE',
         'BSC',
         'NULS2'
       ],
       target_chains: [
         'ETH',
         'AVAX',
+        'BASE',
         'BSC',
         'NULS2'
       ],
       chain_labels: {
         'ETH': 'Ethereum',
         'AVAX': 'Avalanche C-Chain',
+        'BASE': 'Base',
         'BSC': 'BNB Chain',
         'NULS2': 'NULS'
       },
@@ -149,24 +152,28 @@ export default {
         'ETH': '0x27702a26126e0B3702af63Ee09aC4d1A084EF628',
         'BSC': '0x82D2f8E02Afb160Dd5A480a617692e62de9038C4',
         'NEO': '2efdb22c152896964665d0a8214dc7bd59232162',
-        'AVAX': '0xc0Fbc4967259786C743361a5885ef49380473dCF'
+        'AVAX': '0xc0Fbc4967259786C743361a5885ef49380473dCF',
+        'BASE': '0xc0Fbc4967259786C743361a5885ef49380473dCF'
       },
       targets: {
         'NULS2': 'NULSd6HgUUzDe6HxEB3SoyPR2V1DTvnaBFnVV',
         'ETH': '0x047f18e7F21Aa714c6a5f4B346318Eb384434A4b',
         'BSC': '0x5594eA3f85272784f66A282FB3D78fe002B92356',
-        'AVAX': '0x5594eA3f85272784f66A282FB3D78fe002B92356'
+        'AVAX': '0x5594eA3f85272784f66A282FB3D78fe002B92356',
+        'BASE': '0xfcED55710b9B7d6084211dDA12d9beCfc909A5Ed'
       },
       chain_ids: {
         'ETH': 1,
         'BSC': 56,
         'AVAX': 43114,
+        'BASE': 8453
       },
       fees: {
         'NULS2': 0,
         'ETH': 40,
         'BSC': 5,
-        'AVAX': 10
+        'AVAX': 10,
+        'BASE': 10
       }
     }
   },
@@ -185,7 +192,8 @@ export default {
       let target = this.target_address
       if ((this.target_chain === 'BSC') ||
           (this.target_chain === 'ETH') ||
-          (this.target_chain === 'AVAX')) {
+          (this.target_chain === 'AVAX') ||
+          (this.target_chain === 'BASE')) {
         target = `${this.target_address}@eip155:${this.chain_ids[this.target_chain]}`
       } else if (this.target_chain === 'NULS2') {
         target = `${this.target_address}@nuls`
@@ -295,6 +303,12 @@ export default {
             account.address, provider,
             this.contracts['AVAX']
           )}
+      } else if (account.type === 'BASE') {
+        return {
+          ALEPH: await get_web3_balance_info(
+            account.address, provider,
+            this.contracts['BASE']
+          )}
       } else if (account.type === 'BSC') {
         return {
           ALEPH: await get_web3_balance_info(
@@ -321,7 +335,7 @@ export default {
     check_address() {
       let address_type = this.guess_address_type(this.target_address)
       if (address_type != null) {
-        if ((address_type === 'ETH') && (['AVAX', 'BSC'].includes(this.target_chain)))
+        if ((address_type === 'ETH') && (['AVAX', 'BSC', 'BASE'].includes(this.target_chain)))
           return false
 
         this.target_chain = address_type
