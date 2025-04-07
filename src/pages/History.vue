@@ -1,7 +1,7 @@
 <template>
     <q-page class="" padding>
       <div class="content">
-        <h4 class="text-white row justify-between">
+        <h4 class="row justify-between">
           History
           <q-btn
             color="white"
@@ -19,7 +19,7 @@
       </div>
     </q-page>
   </template>
-  
+
   <script>
   import Swap from '../components/Swap.vue'
   import SwapDetail from '../components/SwapDetail.vue'
@@ -59,4 +59,3 @@
     }
   }
   </script>
-  

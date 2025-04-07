@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h5><span class="text-light text-base text-white">01/</span> <span class="linear-green">Source chain</span></h5>
+    <h5><span class="text-light text-base">01/</span> <span class="linear-green">Source chain</span></h5>
 
     <q-tabs
       v-model="source_chain"
-      class="text-white text-rubik q-pb-lg"
+      class="text-rubik q-pb-lg"
       active-color="primary"
       no-caps
       align="left"
@@ -37,25 +37,25 @@
       </q-card-section>
     </q-card>
 
-    <h5><span class="text-light text-base text-white">02/</span> <span class="linear-green">Destination chain</span></h5>
+    <h5><span class="text-light text-base">02/</span> <span class="linear-green">Destination chain</span></h5>
 
     <q-tabs
       v-model="target_chain"
-      class="text-white text-rubik q-pb-lg"
+      class="text-rubik q-pb-lg"
       active-color="primary"
       no-caps
       align="left"
     >
       <q-tab v-for="chain of target_chains" :name="chain" :key="chain" :label="chain_labels[chain]" />
     </q-tabs>
-    
+
     <q-card>
       <q-card-section>
         <q-input rounded standout :bottom-slots="false" v-model="target_address" label="Target address" :error="check_address()" />
       </q-card-section>
     </q-card>
 
-    <h5><span class="text-light text-base text-white">03/</span> <span class="linear-green">Amount</span></h5>
+    <h5><span class="text-light text-base">03/</span> <span class="linear-green">Amount</span></h5>
     <q-card>
       <q-card-section>
         <div>
@@ -170,7 +170,7 @@ export default {
       }
     }
   },
-  computed: { 
+  computed: {
     aleph_balance() {
       return (this.source_balances.ALEPH != undefined) ? this.source_balances.ALEPH : 0
     },

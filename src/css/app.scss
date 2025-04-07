@@ -1,4 +1,8 @@
 // app global css in SCSS form
+body {
+  background-color: $app-background;
+  color: $font;
+}
 
 /* latin */
 @font-face {
@@ -138,6 +142,10 @@ h6,
     0px 4px 18px 0px rgba(146, 210, 210, 0.3) inset;
 }
 
+.q-header {
+  color: $font;
+}
+
 .outside-nav {
   background: $navigator-bg;
   width: 3.938rem;
@@ -158,7 +166,7 @@ h6,
     transition: color 0.25s ease-in-out 0.05s;
 
     svg {
-      fill: color(white);
+      fill: $white;
       height: 0.865rem;
       width: 0.865rem;
       max-width: 1rem;
@@ -197,13 +205,13 @@ h6,
 
 .main-sidebar {
   background: $sidebar-bg;
-  color: color(white);
+  color: $white;
   padding-top: 5.6875rem;
 
   a {
     min-height: 2.625rem;
     max-height: 2.625rem;
-    color: color(white) !important;
+    color: $white !important;
     font-weight: bold;
 
     // Hide the focus helper that shows background on hover
