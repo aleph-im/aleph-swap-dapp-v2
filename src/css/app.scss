@@ -140,11 +140,11 @@ h6,
 
 .outside-nav {
   background: $navigator-bg;
-  width: 4rem;
+  width: 3.938rem;
 
   span.logo {
     text-align: center;
-    padding: 1.6rem 0;
+    padding: 1.438rem 0;
     svg {
       height: 2.5rem;
       fill: $navigator-bg;
@@ -154,7 +154,7 @@ h6,
   }
 
   .q-btn {
-    padding: 0.647rem 0;
+    padding: 0.875rem 0;
     transition: color 0.25s ease-in-out 0.05s;
 
     svg {
@@ -203,6 +203,11 @@ h6,
     height: 2.61rem !important;
     color: color(white) !important;
     font-weight: bold;
+
+    // Hide the focus helper that shows background on hover
+    .q-focus-helper {
+      display: none !important;
+    }
 
     &.active,
     &.q-router-link--exact-active {
