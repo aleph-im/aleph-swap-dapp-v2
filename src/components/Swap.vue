@@ -76,10 +76,10 @@
     <div class="text-center q-ma-lg q-pa-lg" v-if="(source_chain != 'NULS2')&&(source_account.address != undefined)&&!check_address()&&!out_txid">
       <q-btn @click="do_approve" color="glow-primary-raised"
               v-if="(source_account.meta === 'ETH') && !enough_allowance"
-              class="text-bold text-rubik text-black shadow-glow" no-caps :loading="approving" rounded>
+              class="text-bold text-rubik shadow-glow" no-caps :loading="approving" rounded>
         Approve
       </q-btn>
-      <q-btn @click="do_swap" color="glow-primary-raised" class="text-bold text-rubik text-black shadow-glow" v-else :disabled="!can_swap" no-caps :loading="swapping" rounded>
+      <q-btn @click="do_swap" color="glow-primary-raised" class="text-bold text-rubik shadow-glow" v-else :disabled="!can_swap" no-caps :loading="swapping" rounded>
         Swap {{amount}} ALEPH
       </q-btn>
     </div>
