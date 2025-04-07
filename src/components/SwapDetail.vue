@@ -13,7 +13,7 @@
             {{moment(swap.time * 1000).format("lll")}}
           </q-tooltip>
           {{moment(swap.time * 1000).fromNow()}}
-        </span> 
+        </span>
         <span v-if="swap.content.source.height" class="text-caption q-ml-md text-bold"> Block {{swap.content.source.height}}</span>
 
         <span class="q-ml-md">
@@ -30,7 +30,7 @@
 
     <q-card class="q-mb-md">
       <q-card-section class="q-pb-sm">
-        <div class="text-weight-bold linear-green">Swap Information</div>
+        <div class="text-weight-bold linear-primary">Swap Information</div>
       </q-card-section>
 
       <q-card-section horizontal class="justify-between">

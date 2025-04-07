@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h5><span class="text-light text-base">01/</span> <span class="linear-green">Source chain</span></h5>
+    <h5><span class="text-primary text-base">01/</span> <span class="linear-primary">Source chain</span></h5>
 
     <q-tabs
       v-model="source_chain"
@@ -37,7 +37,7 @@
       </q-card-section>
     </q-card>
 
-    <h5><span class="text-light text-base">02/</span> <span class="linear-green">Destination chain</span></h5>
+    <h5><span class="text-primary text-base">02/</span> <span class="linear-primary">Destination chain</span></h5>
 
     <q-tabs
       v-model="target_chain"
@@ -55,7 +55,7 @@
       </q-card-section>
     </q-card>
 
-    <h5><span class="text-light text-base">03/</span> <span class="linear-green">Amount</span></h5>
+    <h5><span class="text-primary text-base">03/</span> <span class="linear-primary">Amount</span></h5>
     <q-card>
       <q-card-section>
         <div>
