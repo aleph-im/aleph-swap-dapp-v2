@@ -164,6 +164,11 @@ h6,
       max-width: 1rem;
     }
 
+    // Hide the focus helper that shows background on hover
+    .q-focus-helper {
+      display: none !important;
+    }
+
     &:hover {
       background: none !important;
 
@@ -173,7 +178,15 @@ h6,
     }
 
     &.active {
+      cursor: default;
       background: $sidebar-bg;
+
+      box-shadow: none !important;
+      border-radius: 0 !important;
+
+      &:hover {
+        background: $sidebar-bg !important;
+      }
 
       svg {
         fill: $secondary;
