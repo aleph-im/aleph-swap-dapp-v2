@@ -2,116 +2,216 @@
 
 /* latin */
 @font-face {
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 400;
-    src: url(./fonts/rubik.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  src: url(./fonts/rubik.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 /* latin */
 @font-face {
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(./fonts/rubik-500.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(./fonts/rubik-500.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 /* latin */
 @font-face {
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 800;
-    font-display: swap;
-    src: url(./fonts/rubik-bold.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(./fonts/rubik-bold.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 
 /* latin */
 @font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-stretch: 100%;
-    src: url(./fonts/open-sans.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src: url(./fonts/open-sans.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 .q-layout-padding {
   max-width: 980px;
   margin: 0 auto;
 }
 
-h1, h2, h3, h4, h5, h6,
-.text-h1, .text-h2, .text-h3, .text-h4,
-.text-h5, .text-h6, .text-h7 {
-    font-family: 'Rubik', sans-serif;
-    font-weight: 800;
-    font-style: italic;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.text-h1,
+.text-h2,
+.text-h3,
+.text-h4,
+.text-h5,
+.text-h6,
+.text-h7 {
+  font-family: "Rubik", sans-serif;
+  font-weight: 800;
+  font-style: italic;
 }
 
 .text-rubik {
-    font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 .text-base {
-    font-family: $typography-font-family;
+  font-family: $typography-font-family;
 }
 
 .superscript {
-    font-family: Rubik;
-    font-size: 10px;
-    font-style: italic;
-    font-weight: 800;
-    line-height: normal;
-    text-transform: uppercase; 
-    padding-right: 0.1em;
+  font-family: Rubik;
+  font-size: 10px;
+  font-style: italic;
+  font-weight: 800;
+  line-height: normal;
+  text-transform: uppercase;
+  padding-right: 0.1em;
 }
 
 .linear-green {
-    background: linear-gradient(90deg, #EEFF9C 0%, #00FFBD 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-    padding-right: 4px;
+  background: linear-gradient(90deg, #eeff9c 0%, #00ffbd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  padding-right: 4px;
 }
 
-
 .q-card.q-dark {
-    border-radius: 24px;
-    background: linear-gradient(to bottom, rgba(29, 28, 55, 0.90), rgba(29, 28, 55, 0.90)), url(./img/noise.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+  border-radius: 24px;
+  background: linear-gradient(
+      to bottom,
+      rgba(29, 28, 55, 0.9),
+      rgba(29, 28, 55, 0.9)
+    ),
+    url(./img/noise.png);
+  background-size: cover;
+  background-repeat: no-repeat;
 
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .bg-glow-primary-raised {
-    background: var(--GRADIENT-blue, linear-gradient(90deg, #00D1FF 0%, #0054FF 100%));
-    /* GLOW-MIN/blue */
-    box-shadow: 0px -82px 68px -64px rgba(68, 98, 144, 0.30) inset, 0px 7px 11px -4px rgba(255, 255, 255, 0.70) inset, 0px 1px 40px 0px rgba(222, 239, 255, 0.20) inset, 0px 4px 18px 0px rgba(146, 210, 210, 0.30) inset, 0px -18px 70px 26px rgba(0, 84, 255, 0.11), 24px 40px 92px 44px rgba(0, 102, 255, 0.30);
-    backdrop-filter: blur(50px); 
+  background: var(
+    --GRADIENT-blue,
+    linear-gradient(90deg, #00d1ff 0%, #0054ff 100%)
+  );
+  /* GLOW-MIN/blue */
+  box-shadow: 0px -82px 68px -64px rgba(68, 98, 144, 0.3) inset,
+    0px 7px 11px -4px rgba(255, 255, 255, 0.7) inset,
+    0px 1px 40px 0px rgba(222, 239, 255, 0.2) inset,
+    0px 4px 18px 0px rgba(146, 210, 210, 0.3) inset,
+    0px -18px 70px 26px rgba(0, 84, 255, 0.11),
+    24px 40px 92px 44px rgba(0, 102, 255, 0.3);
+  backdrop-filter: blur(50px);
 }
 
 .bg-glow-primary {
-    background: var(--GRADIENT-blue, linear-gradient(90deg, #00D1FF 0%, #0054FF 100%));
-    /* GLOW-MIN/blue */
-    box-shadow: 0px -82px 68px -64px rgba(68, 98, 144, 0.30) inset, 0px 7px 11px -4px rgba(255, 255, 255, 0.70) inset, 0px 1px 40px 0px rgba(222, 239, 255, 0.20) inset, 0px 4px 18px 0px rgba(146, 210, 210, 0.30) inset;
+  background: var(
+    --GRADIENT-blue,
+    linear-gradient(90deg, #00d1ff 0%, #0054ff 100%)
+  );
+  /* GLOW-MIN/blue */
+  box-shadow: 0px -82px 68px -64px rgba(68, 98, 144, 0.3) inset,
+    0px 7px 11px -4px rgba(255, 255, 255, 0.7) inset,
+    0px 1px 40px 0px rgba(222, 239, 255, 0.2) inset,
+    0px 4px 18px 0px rgba(146, 210, 210, 0.3) inset;
 }
 
 .outside-nav {
-    width: 72px;
-    background: rgba(0, 0, 0, 0.30); 
+  background: $navigator-bg;
+  width: 4rem;
 
-    .q-btn {
-        opacity: .5;
-        &.active,
-        &:hover {
-            opacity: 1;
-        }
+  span.logo {
+    text-align: center;
+    padding: 1.6rem 0;
+    svg {
+      height: 2.5rem;
+      fill: $navigator-bg;
     }
+    display: block;
+    background: $secondary;
+  }
+
+  .q-btn {
+    padding: 0.647rem 0;
+    transition: color 0.25s ease-in-out 0.05s;
+
+    svg {
+      fill: color(white);
+      height: 0.865rem;
+      width: 0.865rem;
+      max-width: 1rem;
+    }
+
+    &:hover {
+      background: none !important;
+
+      svg {
+        fill: $secondary;
+      }
+    }
+
+    &.active {
+      background: $sidebar-bg;
+
+      svg {
+        fill: $secondary;
+      }
+    }
+  }
+}
+
+.main-sidebar {
+  background: $sidebar-bg;
+  color: color(white);
+
+  a {
+    height: 2.61rem !important;
+    color: color(white) !important;
+    font-weight: bold;
+
+    &.active,
+    &.q-router-link--exact-active {
+      color: $sidebar-bg !important;
+      background: $secondary !important;
+
+      &:hover {
+        color: $sidebar-bg !important;
+        background: $secondary !important;
+        cursor: default !important;
+      }
+    }
+
+    &:hover {
+      color: $sidebar-link-hover !important;
+      background-color: $navbar-bg !important;
+    }
+  }
+
+  .q-item__label--header {
+    color: $sidebar-menu-header !important;
+    font-weight: bold;
+    margin-left: 0.3rem;
+  }
 }
