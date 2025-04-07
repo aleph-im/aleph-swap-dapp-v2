@@ -198,9 +198,11 @@ h6,
 .main-sidebar {
   background: $sidebar-bg;
   color: color(white);
+  padding-top: 5.6875rem;
 
   a {
-    height: 2.61rem !important;
+    min-height: 2.625rem;
+    max-height: 2.625rem;
     color: color(white) !important;
     font-weight: bold;
 
@@ -230,6 +232,7 @@ h6,
   .q-item__label--header {
     color: $sidebar-menu-header !important;
     font-weight: bold;
-    margin-left: 0.3rem;
+    max-height: 2.625rem;
+    padding-left: 1.3125rem;
   }
 }

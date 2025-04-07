@@ -107,7 +107,7 @@
         </q-btn>
       </div>
       <div class="col-grow main-sidebar">
-        <q-list class="text-rubik q-pt-xl q-mt-xl">
+        <q-list class="text-rubik">
           <q-item-label header>SWAP</q-item-label>
 
           <q-item to="/" clickable tag="a" exact>
