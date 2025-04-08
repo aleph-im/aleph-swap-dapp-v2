@@ -4,7 +4,6 @@
         <h4 class="row justify-between">
           History
           <q-btn
-            color="white"
             round
             flat
             dense
