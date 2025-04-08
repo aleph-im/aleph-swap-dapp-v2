@@ -1,10 +1,9 @@
 <template>
   <div>
-    <h5><span class="text-primary text-base">01/</span> <span class="linear-primary">Source chain</span></h5>
-
+    <h5><span class="text-primary text-base text-italic">01/</span> <span class="linear-primary">Source chain</span></h5>
     <q-tabs
       v-model="source_chain"
-      class="text-rubik q-pb-lg"
+      class="q-pb-lg"
       active-color="primary"
       no-caps
       align="left"
@@ -37,11 +36,11 @@
       </q-card-section>
     </q-card>
 
-    <h5><span class="text-primary text-base">02/</span> <span class="linear-primary">Destination chain</span></h5>
+    <h5><span class="text-primary text-base text-italic">02/</span> <span class="linear-primary">Destination chain</span></h5>
 
     <q-tabs
       v-model="target_chain"
-      class="text-rubik q-pb-lg"
+      class="q-pb-lg"
       active-color="primary"
       no-caps
       align="left"
@@ -55,7 +54,7 @@
       </q-card-section>
     </q-card>
 
-    <h5><span class="text-primary text-base">03/</span> <span class="linear-primary">Amount</span></h5>
+    <h5><span class="text-primary text-base text-italic">03/</span> <span class="linear-primary">Amount</span></h5>
     <q-card>
       <q-card-section>
         <div>
@@ -76,10 +75,10 @@
     <div class="text-center q-ma-lg q-pa-lg" v-if="(source_chain != 'NULS2')&&(source_account.address != undefined)&&!check_address()&&!out_txid">
       <q-btn @click="do_approve" color="glow-primary-raised"
               v-if="(source_account.meta === 'ETH') && !enough_allowance"
-              class="text-bold text-rubik shadow-glow" no-caps :loading="approving" rounded>
+              class="text-bold shadow-glow" no-caps :loading="approving" rounded>
         Approve
       </q-btn>
-      <q-btn @click="do_swap" color="glow-primary-raised" class="text-bold text-rubik shadow-glow" v-else :disabled="!can_swap" no-caps :loading="swapping" rounded>
+      <q-btn @click="do_swap" color="glow-primary-raised" class="text-bold shadow-glow" v-else :disabled="!can_swap" no-caps :loading="swapping" rounded>
         Swap {{amount}} ALEPH
       </q-btn>
     </div>

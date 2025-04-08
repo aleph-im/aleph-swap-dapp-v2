@@ -2,13 +2,7 @@
 
 // import fonts
 @import url("https://use.typekit.net/acb7qvn.css");
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400;1,700&family=Source+Code+Pro:wght@400;700&display=swap");
-
-// default styles
-body {
-  background-color: $app-background;
-  color: $font;
-}
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
 
 /* latin */
 @font-face {
@@ -57,6 +51,13 @@ body {
     U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+// default styles
+body {
+  background-color: $app-background;
+  color: $font;
+  font-family: $typography-font-family;
+}
+
 .q-layout-padding {
   max-width: 980px;
   margin: 0 auto;
@@ -79,16 +80,17 @@ h6,
   font-weight: 800;
 }
 
-.text-rubik {
-  font-family: "Rubik", sans-serif;
-}
-
 .text-rigid {
   font-family: "rigid-square", sans-serif;
 }
 
 .text-base {
   font-family: $typography-font-family;
+}
+
+.q-tab__label {
+  font-family: "rigid-square", sans-serif;
+  font-weight: 700 !important;
 }
 
 .q-field--standout.q-field--highlighted .q-field__control {
@@ -229,6 +231,9 @@ h6,
   background: $sidebar-bg;
   color: $white;
   padding-top: 5.6875rem;
+  font-family: "rigid-square", sans-serif;
+  font-size: 0.984rem;
+  font-weight: 700;
 
   a {
     min-height: 2.625rem;
@@ -260,8 +265,8 @@ h6,
   }
 
   .q-item__label--header {
+    font-size: 0.984rem !important;
     color: $sidebar-menu-header !important;
-    font-weight: bold;
     max-height: 2.625rem;
     padding-left: 1.3125rem;
   }
