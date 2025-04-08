@@ -1,9 +1,7 @@
 // app global css in SCSS form
 
-// import fonts
-@import url("https://use.typekit.net/acb7qvn.css");
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
-
+/* Font definitions for self-hosted fonts - @font-face rules are still needed here 
+   even though we preload the files in the HTML head */
 /* latin */
 @font-face {
   font-family: "Rubik";
