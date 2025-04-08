@@ -1,4 +1,10 @@
 // app global css in SCSS form
+
+// import fonts
+@import url("https://use.typekit.net/acb7qvn.css");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400;1,700&family=Source+Code+Pro:wght@400;700&display=swap");
+
+// default styles
 body {
   background-color: $app-background;
   color: $font;
@@ -69,13 +75,16 @@ h6,
 .text-h5,
 .text-h6,
 .text-h7 {
-  font-family: "Rubik", sans-serif;
+  font-family: "rigid-square", sans-serif;
   font-weight: 800;
-  font-style: italic;
 }
 
 .text-rubik {
   font-family: "Rubik", sans-serif;
+}
+
+.text-rigid {
+  font-family: "rigid-square", sans-serif;
 }
 
 .text-base {
@@ -87,9 +96,8 @@ h6,
 }
 
 .superscript {
-  font-family: Rubik;
+  font-family: "rigid-square", sans-serif;
   font-size: 10px;
-  font-style: italic;
   font-weight: 800;
   line-height: normal;
   text-transform: uppercase;
