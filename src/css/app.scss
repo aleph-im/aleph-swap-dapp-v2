@@ -1,117 +1,218 @@
 // app global css in SCSS form
 
-/* latin */
-@font-face {
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 400;
-    src: url(./fonts/rubik.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+// default styles
+body {
+  background-color: $app-background;
+  color: $font;
+  font-family: $typography-font-family;
 }
 
-/* latin */
-@font-face {
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(./fonts/rubik-500.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* latin */
-@font-face {
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 800;
-    font-display: swap;
-    src: url(./fonts/rubik-bold.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-
-/* latin */
-@font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-stretch: 100%;
-    src: url(./fonts/open-sans.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  
 .q-layout-padding {
   max-width: 980px;
   margin: 0 auto;
 }
 
-h1, h2, h3, h4, h5, h6,
-.text-h1, .text-h2, .text-h3, .text-h4,
-.text-h5, .text-h6, .text-h7 {
-    font-family: 'Rubik', sans-serif;
-    font-weight: 800;
-    font-style: italic;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.text-h1,
+.text-h2,
+.text-h3,
+.text-h4,
+.text-h5,
+.text-h6,
+.text-h7 {
+  font-family: $heading-font-family;
+  font-weight: $heading-font-weight;
 }
 
-.text-rubik {
-    font-family: 'Rubik', sans-serif;
+.text-rigid {
+  font-family: $heading-font-family;
 }
 
 .text-base {
-    font-family: $typography-font-family;
+  font-family: $typography-font-family;
+}
+
+.q-tab__label {
+  font-family: $heading-font-family;
+  font-weight: 700 !important;
+}
+
+.q-field--standout.q-field--highlighted .q-field__control {
+  background: rgba($primary, 12%) !important;
 }
 
 .superscript {
-    font-family: Rubik;
-    font-size: 10px;
-    font-style: italic;
-    font-weight: 800;
-    line-height: normal;
-    text-transform: uppercase; 
-    padding-right: 0.1em;
+  font-family: $heading-font-family;
+  font-size: $superscript-font-size;
+  font-weight: $heading-font-weight;
+  line-height: normal;
+  text-transform: uppercase;
+  padding-right: 0.1em;
 }
 
-.linear-green {
-    background: linear-gradient(90deg, #EEFF9C 0%, #00FFBD 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-    padding-right: 4px;
+.linear-primary {
+  background: linear-gradient(90deg, $black 8.24%, $primary 71.81%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding-right: 4px;
+  width: fit-content;
 }
 
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 25rem -25rem;
+  }
+}
 
-.q-card.q-dark {
-    border-radius: 24px;
-    background: linear-gradient(to bottom, rgba(29, 28, 55, 0.90), rgba(29, 28, 55, 0.90)), url(./img/noise.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+.q-card {
+  position: relative;
+  background: radial-gradient(50% 50% at 50% 50%, $card-bg-primary 0%, $card-bg-secondary 100%);
+  background-repeat: repeat;
+  z-index: 0;
+  backface-visibility: hidden;
+  box-shadow: none;
 
-    box-shadow: none;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.4;
+    background-repeat: repeat;
+    background-size: 25rem 25rem;
+    animation: $background-animation-speed linear 0s infinite moveBackground;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDAwIiB3aWR0aD0iNDAwIj4KCTxmaWx0ZXIgaWQ9ImZpbHRlciI+CgkJPGZlVHVyYnVsZW5jZSAKCQkJYmFzZUZyZXF1ZW5jeT0iLjI1IgoJCQl0eXBlPSdmcmFjdGFsTm9pc2UnCiAgICAgIG51bU9jdGF2ZXM9JzMnIC8+CgkJPGZlQ29sb3JNYXRyaXggdmFsdWVzPSIwIDAgMCAwIDAuMQoJCQkJCQkJCQkJCQkJIDAgMCAwIDAgMAoJCQkJCQkJCQkJCQkJIDAgMCAwIDAgMC44MAoJCQkJCQkJCQkJCQkJIDAgMCAwIDEwIC03LjI1Ii8+Cgk8L2ZpbHRlcj4KCTxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNmaWx0ZXIpIi8+Cjwvc3ZnPg==");
+  }
 }
 
 .bg-glow-primary-raised {
-    background: var(--GRADIENT-blue, linear-gradient(90deg, #00D1FF 0%, #0054FF 100%));
-    /* GLOW-MIN/blue */
-    box-shadow: 0px -82px 68px -64px rgba(68, 98, 144, 0.30) inset, 0px 7px 11px -4px rgba(255, 255, 255, 0.70) inset, 0px 1px 40px 0px rgba(222, 239, 255, 0.20) inset, 0px 4px 18px 0px rgba(146, 210, 210, 0.30) inset, 0px -18px 70px 26px rgba(0, 84, 255, 0.11), 24px 40px 92px 44px rgba(0, 102, 255, 0.30);
-    backdrop-filter: blur(50px); 
+  background: linear-gradient(
+    90deg,
+    rgb(20, 20, 33) 8.24%,
+    rgb(81, 0, 205) 71.81%
+  );
+  filter: drop-shadow(rgba($primary, 0.5) 0px 4px 24px);
 }
 
-.bg-glow-primary {
-    background: var(--GRADIENT-blue, linear-gradient(90deg, #00D1FF 0%, #0054FF 100%));
-    /* GLOW-MIN/blue */
-    box-shadow: 0px -82px 68px -64px rgba(68, 98, 144, 0.30) inset, 0px 7px 11px -4px rgba(255, 255, 255, 0.70) inset, 0px 1px 40px 0px rgba(222, 239, 255, 0.20) inset, 0px 4px 18px 0px rgba(146, 210, 210, 0.30) inset;
+.q-header {
+  color: $font;
 }
 
 .outside-nav {
-    width: 72px;
-    background: rgba(0, 0, 0, 0.30); 
+  background: $navigator-bg;
+  width: $nav-width;
 
-    .q-btn {
-        opacity: .5;
-        &.active,
-        &:hover {
-            opacity: 1;
-        }
+  span.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: $navbar-logo-container-height;
+
+    img,
+    svg {
+      height: $navbar-logo-height;
+      fill: $navigator-bg;
     }
+    background: $secondary;
+  }
+
+  .q-btn {
+    padding: $nav-btn-padding 0;
+    transition: $hover-transition;
+
+    svg {
+      fill: $white;
+      height: $navbar-icon-size;
+      width: $navbar-icon-size;
+      max-width: 1rem;
+    }
+
+    // Hide the focus helper that shows background on hover
+    .q-focus-helper {
+      display: none !important;
+    }
+
+    &:hover {
+      background: none !important;
+
+      svg {
+        fill: $secondary;
+      }
+    }
+
+    &.active {
+      cursor: default;
+      background: $sidebar-bg;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+
+      &:hover {
+        background: $sidebar-bg !important;
+      }
+
+      svg {
+        fill: $secondary;
+      }
+    }
+  }
+}
+
+.main-sidebar {
+  background: $sidebar-bg;
+  color: $white;
+  padding-top: $navbar-logo-container-height;
+  font-family: $heading-font-family;
+  font-size: $menu-font-size;
+  font-weight: 700;
+
+  a {
+    min-height: $menu-item-height;
+    max-height: $menu-item-height;
+    color: $white !important;
+    font-weight: bold;
+
+    // Hide the focus helper that shows background on hover
+    .q-focus-helper {
+      display: none !important;
+    }
+
+    &.active,
+    &.q-router-link--exact-active {
+      color: $sidebar-bg !important;
+      background: $secondary !important;
+
+      &:hover {
+        color: $sidebar-bg !important;
+        background: $secondary !important;
+        cursor: default !important;
+      }
+    }
+
+    &:hover {
+      color: $sidebar-link-hover !important;
+      background-color: $navbar-bg !important;
+    }
+  }
+
+  .q-item__label--header {
+    font-size: $menu-font-size !important;
+    color: $sidebar-menu-header !important;
+    max-height: $menu-item-height;
+    padding-left: $sidebar-item-padding;
+  }
 }

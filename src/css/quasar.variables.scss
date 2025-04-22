@@ -12,16 +12,55 @@
 // to match your app's branding.
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
-$primary   : #029AFF;
-$secondary : #26A69A;
-$accent    : #9C27B0;
+// Colors
+$primary: #5100cd;
+$secondary: #d4ff00;
+$accent: #d4ff00;
+$dark: #141421;
+$positive: #47ff59;
+$negative: #d9245a;
+$info: #5100cd;
+$warning: #fecd17;
 
-$dark      : #121123;
-$dark-page : #141327;
+$white: #ffffff;
+$black: #1d1d2a;
+$font: #141421;
 
-$positive  : #21BA45;
-$negative  : #C10015;
-$info      : #31CCEC;
-$warning   : #F2C037;
+// Background colors
+$app-background: #f9f4ff;
+$card-bg-primary: #ebdaff;
+$card-bg-secondary: #f0e4ff91;
 
-$typography-font-family         : 'Open Sans', '-apple-system', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+// Navigation colors
+$navbar-bg: #1f1f31;
+$navigator-bg: #000000;
+$sidebar-bg: #1f1f31;
+$sidebar-link-hover: $secondary;
+$sidebar-button-bg: #000000;
+$sidebar-menu-header: rgba(249, 244, 255, 0.5);
+
+// Spacing
+$nav-width: 3.938rem;
+$logo-padding: 1.438rem;
+$nav-btn-padding: 0.875rem;
+$sidebar-item-padding: 1.3125rem;
+
+// Component sizes
+$navbar-logo-container-height: 5.6875rem;
+$navbar-logo-height: 2.5rem;
+$navbar-icon-size: 0.865rem;
+$menu-item-height: 2.625rem;
+
+// Typography
+$typography-font-family: "Titillium Web", "Open Sans", "-apple-system", "Helvetica Neue",
+  Helvetica, Arial, sans-serif !default;
+$heading-font-family: "rigid-square", sans-serif;
+$heading-font-weight: 800;
+$menu-font-size: 0.984rem;
+$superscript-font-size: 10px;
+
+// Transitions
+$hover-transition: 0.25s ease-in-out 0.05s;
+
+// Animation
+$background-animation-speed: 60s;
