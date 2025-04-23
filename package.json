@@ -1,6 +1,6 @@
 {
   "name": "aleph-swap-dapp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Aleph Cloud dApp aiming to facilitate the swapping of cross-chain tokens",
   "productName": "Swap - Aleph Cloud",
   "author": "Moshe Malawach <moshe@aleph.im>",
