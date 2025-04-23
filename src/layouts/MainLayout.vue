@@ -32,7 +32,7 @@
             <AccountIcon />
           </q-icon>
         </q-btn>
-        <q-btn href="https://app.aleph.cloud/explorer/" target="_blank">
+        <q-btn href="https://explorer.aleph.cloud/" target="_blank">
           <q-icon size="0.875rem">
             <ExplorerIcon />
           </q-icon>
