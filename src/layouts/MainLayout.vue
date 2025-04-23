@@ -22,17 +22,17 @@
         <span class="logo">
           <AlephLogoIcon />
         </span>
-        <q-btn href="https://console.aleph.im/" target="_blank">
+        <q-btn href="https://app.aleph.cloud/console/" target="_blank">
           <q-icon size="0.875rem">
             <ConsoleIcon />
           </q-icon>
         </q-btn>
-        <q-btn href="https://account.aleph.im/" target="_blank">
+        <q-btn href="https://app.aleph.cloud/account/" target="_blank">
           <q-icon size="0.875rem">
             <AccountIcon />
           </q-icon>
         </q-btn>
-        <q-btn href="https://explorer.aleph.im/" target="_blank">
+        <q-btn href="https://app.aleph.cloud/explorer/" target="_blank">
           <q-icon size="0.875rem">
             <ExplorerIcon />
           </q-icon>
