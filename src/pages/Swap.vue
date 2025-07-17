@@ -1,9 +1,9 @@
 <template>
   <q-page class="" padding>
     <div class="content">
-      <h4>
-        Swap
-      </h4>
+      <h1 class="text-h4">
+        Bridge $ALEPH
+      </h1>
       <swap />
     </div>
   </q-page>

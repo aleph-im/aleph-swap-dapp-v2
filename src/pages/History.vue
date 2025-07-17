@@ -1,7 +1,7 @@
 <template>
     <q-page class="" padding>
       <div class="content">
-        <h4 class="row justify-between">
+        <h1 class="text-h4 row justify-between">
           History
           <q-btn
             round
@@ -11,7 +11,7 @@
             :active="!refreshing"
             @click="get_swaps"
           />
-        </h4>
+        </h1>
         <div v-for="swap of swaps" :key="swap.original_item_hash">
           <swap-detail :swap="swap" />
         </div>
