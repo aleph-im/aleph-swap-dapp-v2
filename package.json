@@ -1,6 +1,6 @@
 {
   "name": "aleph-swap-dapp",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Easily bridge ALEPH crypto securely with Aleph Cloud's native bridge. Fast, low-fee swap between, Avalanche, BSC, Base and Ethereum.",
   "productName": "Bridge $ALEPH | Aleph Cloud",
   "author": "Moshe Malawach <moshe@aleph.im>",
